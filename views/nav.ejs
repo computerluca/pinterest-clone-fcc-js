@@ -1,0 +1,19 @@
+<% if (user) { %>
+<h2>Your account information</h2>
+                    <p>
+                        <strong>id</strong>: <%= user.id %><br>
+                        <strong>display name</strong>: <%= user.displayName %><br>
+                        <strong>username</strong>: <%= user.username %>
+                        <ul><li>
+
+                                                   <li> <a href="/logout" class="btn btn-default btn-sm">Logout</a></li>
+                                                   <li><a href="/mybook">My Posts</a></li>
+                                                   <li><a href="/newbook">New Post</a></li>
+                                                   </ul>
+
+                    </p>
+
+                <% } else { %>
+
+                    <a href="/auth/twitter" class="btn btn-info">Login Twitter</a>
+                <% } %>
