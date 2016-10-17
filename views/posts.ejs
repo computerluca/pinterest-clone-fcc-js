@@ -1,10 +1,27 @@
-<section>
-                <h2>All the Links posted by the Users!</h2>
+              
+              
+                <h2><%= title %></h2>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 <div class="grid">
-     <div class="grid-item grid-item--width2">Ciao uploaded by computerluca<img src="images/cat.jpg"  alt="gatto" />Number of links ciao</div>
-      <div class="grid-item grid-item--width3">Ciao uploaded by dsfasdf<img src="images/cat.jpg"  alt="gatto2" />Number of links ddd</div>
-     <div class="grid-item grid-item--width4">Ciao uploaded by asdasdfa<img src="images/cat.jpg"  alt="gatto3" />Number of links ddf</div>
+    
+    <% if(posts.length ==0){ %>
+    <h2>No results found</h2>
+    <% } %>
+    <% for(var i=0; i<posts.length; i++) {%>
+   <div class="grid-item <%= posts[i].width %>"><p><%= posts[i].title %>posted by <a href="/profile/<%=posts[i].id_user %>"><%=posts[i].id_user %></a></p><img src="<%=posts[i].url %>" alt="<%=posts[i].title %>" />
+   <% if (user && posts[i].id_user==user.username) { %>
+      <button onclick ='$.ajax({
+    type: "DELETE",
+    url: "/post/<%=posts[i]._id %>",
+    success: function(msg){
+        alert("Data Deleted: " + msg);
+    }
+});'>Delete</button>
+      <% } %>
+
+</div>
+<% } %>
 
 
 
@@ -12,4 +29,3 @@
 
 
 
-    </section>

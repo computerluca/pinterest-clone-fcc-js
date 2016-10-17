@@ -2,11 +2,11 @@
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080;
-var mongoose = require('mongoose');
+var mongoose = require('mongoose').set('debug', true);
 var passport = require('passport');
 var flash    = require('connect-flash');
 var dotenv = require('dotenv').config();
-
+ var ejs = require('ejs');
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('views'));
 app.set('view engine', 'ejs'); 
-
+ 
 // required for passport
 app.use(session({
     secret: process.env.secret, 
